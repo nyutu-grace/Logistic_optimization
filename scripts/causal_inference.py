@@ -2,6 +2,12 @@ import pandas as pd
 import numpy as np
 from dowhy import CausalModel
 
+df = pd.read_csv('../data/processeddata/mergeddata.csv')
+
+train_df = df.sample(frac=0.8, random_state=42)
+holdout_df = df.drop(train_df.index)
+
+
 def perform_causal_analysis(train_df):
     # Define interventions
     interventions = {
